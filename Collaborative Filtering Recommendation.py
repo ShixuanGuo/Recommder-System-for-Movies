@@ -17,15 +17,15 @@ import pandas as pd
 
 def read_in_movie_preference():
     file_location = "./data/movie_preference.csv"
-    df = None
-    column_names = []
+    df = pd.read_csv(file_location)
+    column_names = list(df.columns[1:])
     preference = {}
     
-    # YOUR CODE HERE
-    raise NotImplementedError()
+    for index, row in df.iterrows():
+        name=row['Please fill in your name. (You can also use an alias name). ']
+        preference[name]=list(row['The Shawshank Redemption':'Kingsman: The Secret Service'])
     
     return [df, column_names, preference]
-
 [df, column_names, preference] = read_in_movie_preference()
 
 
