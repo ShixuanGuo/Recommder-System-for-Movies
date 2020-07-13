@@ -4,12 +4,17 @@
 # ## Collaborative Filtering Recommendation
 # Find top-N similar users for a users and recommend items those similar users liked to the current user
 
+# In[ ]:
+
+
+import pandas as pd
+
+
 # ### 1. Read-in the movie file
 
 # In[ ]:
 
 
-import pandas as pd
 def read_in_movie_preference():
     file_location = "./data/movie_preference.csv"
     df = None
@@ -20,10 +25,6 @@ def read_in_movie_preference():
     raise NotImplementedError()
     
     return [df, column_names, preference]
-
-
-# In[ ]:
-
 
 [df, column_names, preference] = read_in_movie_preference()
 
@@ -66,12 +67,6 @@ def jaccard_similarity(preference_1, preference_2):
     return js
 
 
-# In[ ]:
-
-
-assert round(jaccard_similarity([1, 0, 1, -1], [1, 1, 0, 0]), 2) == 0.33
-
-
 # ### 3. Finding Soulmates
 
 # In[ ]:
@@ -85,7 +80,7 @@ def Find_Soul_Mate(preference, name):
     Parameters
     ----------
     
-    preference: data frame
+    preference: dict
         the memory of previous users with their movie preference
     name: str
         name of target person
@@ -123,12 +118,6 @@ def Find_Soul_Mate(preference, name):
     return [soulmate, soulmate_preference, max_js]
 
 
-# In[ ]:
-
-
-[soulmate, soulmate_preference, js] = Find_Soul_Mate(preference, "Rachel")
-
-
 # ### 4. Recommendation
 
 # In[ ]:
@@ -140,7 +129,7 @@ def Recommendation(preference, name, movie_names):
     
     Parameters
     ---------
-    preference: data frame
+    preference: dict
         the memory of previous users with their movie preference
     name: str
         name of target person
